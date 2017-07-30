@@ -1,0 +1,95 @@
+[
+{"type":"header","version":"4.7.0","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"wallshop.db"},
+{"type":"table","name":"carts","database":"wallshop.db","data":
+[
+
+]
+}
+,{"type":"table","name":"cart_items","database":"wallshop.db","data":
+[
+
+]
+}
+,{"type":"table","name":"items","database":"wallshop.db","data":
+[
+{"id":"1","itemCode":"9706967959207","itemDescription":"P%_%QCBCZNDG","itemPrice":"860.85","created_at":"2017-07-28 02:40:52","updated_at":"2017-07-28 02:40:52"},
+{"id":"2","itemCode":"9395094112670","itemDescription":"CBKFC","itemPrice":"951.90","created_at":"2017-07-28 02:40:52","updated_at":"2017-07-28 02:40:52"},
+{"id":"3","itemCode":"8443236475570","itemDescription":"8RN-K93TJY","itemPrice":"454.59","created_at":"2017-07-28 02:40:52","updated_at":"2017-07-28 02:40:52"},
+{"id":"4","itemCode":"4801310531828","itemDescription":"%YCYWS","itemPrice":"300.25","created_at":"2017-07-28 02:40:52","updated_at":"2017-07-28 02:40:52"},
+{"id":"5","itemCode":"4493660726575","itemDescription":"45INK3AEILPBJ","itemPrice":"924.82","created_at":"2017-07-28 02:40:52","updated_at":"2017-07-28 02:40:52"},
+{"id":"6","itemCode":"9201196456522","itemDescription":"0899KW","itemPrice":"421.72","created_at":"2017-07-28 02:40:52","updated_at":"2017-07-28 02:40:52"},
+{"id":"7","itemCode":"1009214356117","itemDescription":"ZPIZSCKPHE","itemPrice":"293.18","created_at":"2017-07-28 02:40:52","updated_at":"2017-07-28 02:40:52"},
+{"id":"8","itemCode":"6057701823173","itemDescription":"IHDFFS","itemPrice":"713.16","created_at":"2017-07-28 02:40:52","updated_at":"2017-07-28 02:40:52"},
+{"id":"9","itemCode":"3777376093369","itemDescription":"G%5HJVBL24BOK","itemPrice":"798.01","created_at":"2017-07-28 02:40:52","updated_at":"2017-07-28 02:40:52"},
+{"id":"10","itemCode":"3213438685825","itemDescription":"5%TF3RAN","itemPrice":"138.08","created_at":"2017-07-28 02:40:52","updated_at":"2017-07-28 02:40:52"},
+{"id":"11","itemCode":"001","itemDescription":"coffee","itemPrice":"50.00","created_at":"2017-07-28 02:40:52","updated_at":"2017-07-28 02:40:52"}
+]
+}
+,{"type":"table","name":"migrations","database":"wallshop.db","data":
+[
+{"id":"48","migration":"2014_10_12_000000_create_users_table","batch":"1"},
+{"id":"49","migration":"2014_10_12_100000_create_password_resets_table","batch":"1"},
+{"id":"50","migration":"2016_06_01_000001_create_oauth_auth_codes_table","batch":"1"},
+{"id":"51","migration":"2016_06_01_000002_create_oauth_access_tokens_table","batch":"1"},
+{"id":"52","migration":"2016_06_01_000003_create_oauth_refresh_tokens_table","batch":"1"},
+{"id":"53","migration":"2016_06_01_000004_create_oauth_clients_table","batch":"1"},
+{"id":"54","migration":"2016_06_01_000005_create_oauth_personal_access_clients_table","batch":"1"},
+{"id":"55","migration":"2017_07_25_114813_create_items_table","batch":"1"},
+{"id":"56","migration":"2017_07_25_115526_create_usertypes_table","batch":"1"},
+{"id":"57","migration":"2017_07_27_164646_create_carts_table","batch":"1"},
+{"id":"58","migration":"2017_07_27_164720_create_cart_items_table","batch":"1"}
+]
+}
+,{"type":"table","name":"oauth_access_tokens","database":"wallshop.db","data":
+[
+
+]
+}
+,{"type":"table","name":"oauth_auth_codes","database":"wallshop.db","data":
+[
+
+]
+}
+,{"type":"table","name":"oauth_clients","database":"wallshop.db","data":
+[
+{"id":"1","user_id":null,"name":"Wallshop Oauth Token","secret":"wallshop","redirect":"http:\/\/localhost:8000","personal_access_client":"0","password_client":"1","revoked":"0","created_at":null,"updated_at":null}
+]
+}
+,{"type":"table","name":"oauth_personal_access_clients","database":"wallshop.db","data":
+[
+
+]
+}
+,{"type":"table","name":"oauth_refresh_tokens","database":"wallshop.db","data":
+[
+
+]
+}
+,{"type":"table","name":"password_resets","database":"wallshop.db","data":
+[
+
+]
+}
+,{"type":"table","name":"users","database":"wallshop.db","data":
+[
+{"id":"1","name":"Harmon Lindgren","username":"udeckow","password":"$2y$10$3I5bTQGXuJkDZUb5mHvuv.k8fElh6cNVkDYeL5\/aqkr3sHE1..dFG","remember_token":"Jdw3r8Z97e","created_at":"2017-07-28 02:40:52","updated_at":"2017-07-28 02:40:52"},
+{"id":"2","name":"Shania Bins","username":"manuel83","password":"$2y$10$3I5bTQGXuJkDZUb5mHvuv.k8fElh6cNVkDYeL5\/aqkr3sHE1..dFG","remember_token":"OdOBAz31Tg","created_at":"2017-07-28 02:40:52","updated_at":"2017-07-28 02:40:52"},
+{"id":"3","name":"Blair Davis","username":"addie40","password":"$2y$10$3I5bTQGXuJkDZUb5mHvuv.k8fElh6cNVkDYeL5\/aqkr3sHE1..dFG","remember_token":"PxIkJvAqBe","created_at":"2017-07-28 02:40:52","updated_at":"2017-07-28 02:40:52"},
+{"id":"4","name":"Dr. Jayme Hills V","username":"ebony35","password":"$2y$10$3I5bTQGXuJkDZUb5mHvuv.k8fElh6cNVkDYeL5\/aqkr3sHE1..dFG","remember_token":"1TAvwi0W06","created_at":"2017-07-28 02:40:52","updated_at":"2017-07-28 02:40:52"},
+{"id":"5","name":"Lavon Sipes","username":"oberbrunner.myrtis","password":"$2y$10$3I5bTQGXuJkDZUb5mHvuv.k8fElh6cNVkDYeL5\/aqkr3sHE1..dFG","remember_token":"f75fMXHrU6","created_at":"2017-07-28 02:40:52","updated_at":"2017-07-28 02:40:52"},
+{"id":"6","name":"Dr. Wendell Dickens V","username":"kevon59","password":"$2y$10$3I5bTQGXuJkDZUb5mHvuv.k8fElh6cNVkDYeL5\/aqkr3sHE1..dFG","remember_token":"vS1FD5Rndn","created_at":"2017-07-28 02:40:52","updated_at":"2017-07-28 02:40:52"},
+{"id":"7","name":"Mr. Alex Beahan PhD","username":"swaniawski.celine","password":"$2y$10$3I5bTQGXuJkDZUb5mHvuv.k8fElh6cNVkDYeL5\/aqkr3sHE1..dFG","remember_token":"IAoalOWIpq","created_at":"2017-07-28 02:40:52","updated_at":"2017-07-28 02:40:52"},
+{"id":"8","name":"Esperanza Christiansen","username":"alberta.mohr","password":"$2y$10$3I5bTQGXuJkDZUb5mHvuv.k8fElh6cNVkDYeL5\/aqkr3sHE1..dFG","remember_token":"pyYmMPYKQA","created_at":"2017-07-28 02:40:52","updated_at":"2017-07-28 02:40:52"},
+{"id":"9","name":"Orie D'Amore","username":"ibednar","password":"$2y$10$3I5bTQGXuJkDZUb5mHvuv.k8fElh6cNVkDYeL5\/aqkr3sHE1..dFG","remember_token":"hG9j464hwy","created_at":"2017-07-28 02:40:52","updated_at":"2017-07-28 02:40:52"},
+{"id":"10","name":"Stuart Cummings MD","username":"viva40","password":"$2y$10$3I5bTQGXuJkDZUb5mHvuv.k8fElh6cNVkDYeL5\/aqkr3sHE1..dFG","remember_token":"n3z7a3RBAg","created_at":"2017-07-28 02:40:52","updated_at":"2017-07-28 02:40:52"},
+{"id":"11","name":"Administrator","username":"admin","password":"$2y$10$3I5bTQGXuJkDZUb5mHvuv.k8fElh6cNVkDYeL5\/aqkr3sHE1..dFG","remember_token":"OopIaogU3C","created_at":"2017-07-28 02:40:52","updated_at":"2017-07-28 02:40:52"},
+{"id":"12","name":"blablaba","username":"qweqwe","password":"$2y$10$nYJB.xJfHqg5q7NWJpUTuOJ\/DrmzIGCsBnKNSW5CgEu5COv5XHdGu","remember_token":null,"created_at":"2017-07-28 03:38:00","updated_at":"2017-07-28 03:38:00"}
+]
+}
+,{"type":"table","name":"usertypes","database":"wallshop.db","data":
+[
+
+]
+}
+]

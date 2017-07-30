@@ -1,3 +1,24 @@
 page-home {
+	.content{
+		background: url('../assets/img/bg7.jpg') no-repeat center center fixed;
+		background-size: cover;
+	}
 
+	h3{
+		font-weight: 700;
+		font-size: 20px;
+		text-transform: uppercase;
+		color: white;
+	}
+
+	.button{
+		font-weight: 700;
+		color: white;
+	}
+
+	img{
+		margin: auto;
+		display: block;
+		width: 100%;
+	}
 }

@@ -1,0 +1,15 @@
+<!-- Generated template for the UserComponent component -->
+<ion-card *ngFor="let user of users" (press)="showOptions(user.id)">
+  <ion-card-content>
+    {{user.name}}
+  </ion-card-content>
+</ion-card>
+
+
+<!--  <ion-list [virtualScroll]="users">
+ 	<ion-card *virutalItem = "let user">
+ 	  <ion-card-header>
+ 	    {{user.name}}
+ 	  </ion-card-header>
+ 	</ion-card>
+ </ion-list> -->

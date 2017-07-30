@@ -1,0 +1,6 @@
+<!-- Generated template for the ItemComponent component -->
+<ion-card *ngFor="let cart of carts" (tap)="showCartItems(cart.id, cart)">
+  <ion-card-content>
+    Order # {{cart.id}} <div float-right *ngIf="cart.status" color="primary">Processed</div>
+  </ion-card-content>
+</ion-card>

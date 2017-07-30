@@ -1,0 +1,6 @@
+<!-- Generated template for the ItemComponent component -->
+<ion-card *ngFor="let item of items" (press)="showOptions(item.id)">
+  <ion-card-content>
+    {{item.itemDescription}}
+  </ion-card-content>
+</ion-card>

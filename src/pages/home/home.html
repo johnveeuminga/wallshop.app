@@ -1,14 +1,30 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+<!--
+  Generated template for the LoginPage page.
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content padding >
+	<div class="d-flex align-items-center h-100">
+		<ion-grid>
+			<ion-row>
+				<ion-col>
+					<img src="assets/icon.png" alt="" height="300" witdh="200">
+				</ion-col>
+
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<h3 ion-text color='white' text-center>
+						Wallshop
+					</h3>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<button ion-button round block color="primary" (click)="goToShopper()">Shopper</button>
+				<button ion-button round block color="primary" (click)="goToLogin()">Administrator</button>
+			</ion-row>
+		</ion-grid>
+	</div>
 </ion-content>

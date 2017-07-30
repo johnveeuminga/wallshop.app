@@ -1,0 +1,46 @@
+<!--
+  Generated template for the DashboardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+	<ion-toolbar>
+    	<ion-title>Dashboard</ion-title>
+      <ion-buttons start>
+        <button ion-button menuToggle="left" (click)="presentActionSheet()">
+          <ion-icon name="menu"></ion-icon>
+        </button>
+      </ion-buttons>
+	</ion-toolbar>
+    <ion-toolbar>
+    	<ion-segment [(ngModel)]="action">
+    	  <ion-segment-button value="users">
+    	    Users
+    	  </ion-segment-button>
+    	  <ion-segment-button value="items">
+    	    Items
+    	  </ion-segment-button>
+        <ion-segment-button value="orders">
+          Orders
+        </ion-segment-button>
+    	</ion-segment>
+    </ion-toolbar>
+
+</ion-header>
+<ion-content padding>
+	<div [ngSwitch]="action">
+		<div *ngSwitchCase="'users'" ng-selected="selected">
+			<button ion-button color="primary" (click)="presentAddUserModal()"><ion-icon name="add"></ion-icon></button>
+			<user></user>
+		</div>
+		<div *ngSwitchCase="'items'">
+      <button ion-button color="primary" (click)="presentAddItemModal()"><ion-icon name="add"></ion-icon></button>
+      <item></item>
+		</div>
+    <div *ngSwitchCase="'orders'">
+      <cart></cart>
+    </div>
+	</div>
+</ion-content>
