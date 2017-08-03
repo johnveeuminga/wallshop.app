@@ -8,6 +8,8 @@ import { QRScanner } from '@ionic-native/qr-scanner';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { SQLitePorter } from '@ionic-native/sqlite-porter';
 import { SQLite, SQLiteDatabaseConfig , SQLiteObject } from '@ionic-native/sqlite';
+import { SQLiteMock } from '@ionic-native-mocks/sqlite';
+import { SQLitePorterMock } from '@ionic-native-mocks/sqlite-porter';
 import { DatePicker } from '@ionic-native/date-picker'
 
 import { MyApp } from './app.component';
@@ -31,6 +33,7 @@ import { CartProvider } from '../providers/cart/cart';
 import { DatabaseProvider } from '../providers/database/database';
 import { CheckoutPage } from '../pages/checkout/checkout';
 import { CartItemDPage } from '../pages/cart-item-d/cart-item-d';
+import { CartItemEditPage } from '../pages/cart-item-edit/cart-item-edit';
 
 
 import { IonicStorageModule } from '@ionic/storage';
@@ -61,6 +64,7 @@ class BarcodeScannerMock extends BarcodeScanner{
     CartItemPage,
     CheckoutPage,
     CartComponent,
+    CartItemEditPage,
     CartItemDPage
   ],
   imports: [
@@ -82,6 +86,7 @@ class BarcodeScannerMock extends BarcodeScanner{
     EditItemPage,
     CartItemPage,
     CheckoutPage,
+    CartItemEditPage,
     CartItemDPage
   ],
   providers: [
@@ -93,11 +98,13 @@ class BarcodeScannerMock extends BarcodeScanner{
     QRScanner,
     UserProvider,
     ItemProvider,
-    // { provide: BarcodeScanner, useClass: BarcodeScannerMock },
-    BarcodeScanner,
+    { provide: BarcodeScanner, useClass: BarcodeScannerMock },
+    // BarcodeScanner,
     CartItemProvider,
     CartProvider,
     DatabaseProvider,
+    // { provide: SQLite, useClass: SQLiteMock },
+    // { provide: SQLitePorter, useClass: SQLitePorterMock },
     SQLitePorter,
     SQLite,
     DatePicker

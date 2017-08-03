@@ -23,19 +23,8 @@ export class ShopperPage {
 
   cart = [];
 
-  currentItem = [];
-
   constructor(private cartCtrl: CartProvider, private events: Events, public modalCtrl: ModalController, public alertCtrl: AlertController, public itemCtrl: ItemProvider, private qrScanner: QRScanner, private barcodeScanner: BarcodeScanner, public navCtrl: NavController, public navParams: NavParams) {
-    this.events.subscribe("cart:addItem", res => {
-      var cartItem = {
-        itemId: res.item.id,
-        quantity: res.details.quantity,
-        totalPrice: res.details.totalPrice,
-        item: res.item
-      }
-      this.cartCtrl.cart.items.push(cartItem)
-      console.log(this.cartCtrl.cart);
-    })
+
   }
 
   tapped = 0;
@@ -52,8 +41,8 @@ export class ShopperPage {
            if (data.length == 0){
              this.showAlert("", "Item does not exist", ['DISMISS']);
            }else{
-             this.currentItem = data.item(0);
-             this.presentCartItemModal(this.currentItem);
+             var currentItem = data.item(0);
+             this.presentCartItemModal(currentItem);
            }
         },
           error  => {

@@ -3,7 +3,6 @@ import { NavController, NavParams, ViewController, AlertController, ModalControl
 import { CartProvider } from '../../providers/cart/cart';
 import { CartItemProvider } from '../../providers/cart-item/cart-item';
 import { CheckoutPage } from '../checkout/checkout';
-
 /**
  * Generated class for the CartItemPage page.
  *
@@ -26,6 +25,7 @@ export class CartItemPage {
     this.item.itemDescription= scannedItem.itemDescription
     this.item.itemPrice = scannedItem.itemPrice 
     this.calculatePrice();
+    console.log(this.item);
   }
 
   ionViewDidLoad() {
@@ -46,7 +46,15 @@ export class CartItemPage {
       item: this.item,
       details: this.cartItem
     })
-
+    var cartItem = {
+      itemId: this.item.id,
+      quantity: this.cartItem.quantity,
+      totalPrice: this.cartItem.totalPrice,
+      item: this.item
+    }
+    console.log(cartItem);
+    this.cart.cart.items.push(cartItem)
+    console.log(this.cart.cart);
     this.showAlertUndismissable("Item added to cart", "Would like to add another item?",[
       {
         text: "Yes",

@@ -10,7 +10,7 @@
     <ion-title>Checkout</ion-title>
 
     <ion-buttons start>
-      <button ion-button (click)="dismiss()">
+      <button ion-button (click)="goToShopper()">
         <span ion-text color="primary" showWhen="ios">Cancel</span>
         <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
       </button>
@@ -43,11 +43,11 @@
 	  <h3 ion-text color="light" text-right margin-bottom >TOTAL: Php {{totalPrice}}</h3>
 
 
-	<ion-card *ngFor = "let item of cart.items;let i=index ">
+	<ion-card *ngFor = "let item of cart.items;let i=index" (tap)="editCartItem(item,i)">
 	
 	  <ion-card-header >
 	  		{{item.item.itemDescription}}
-	  		<ion-icon name="close" (click)="remove(i)" float-right *ngIf="checkIfCartEmpty()"></ion-icon>
+	  		<ion-icon name="close" (click)="remove(i)" float-right *ngIf="!checkIfCartEmpty()"></ion-icon>
 	  </ion-card-header>
 	  <ion-card-content>
 	    	<p>Quantity: {{item.quantity}}</p>

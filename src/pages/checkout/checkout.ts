@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController} from 'ionic-angular';
+import { NavController, NavParams, AlertController, Events} from 'ionic-angular';
 import { CartProvider } from '../../providers/cart/cart';
 import { ShopperPage } from '../shopper/shopper';
 import { DatePicker } from '@ionic-native/date-picker';
+import { CartItemEditPage } from '../cart-item-edit/cart-item-edit'
+
 
 /**
  * Generated class for the CheckoutPage page.
@@ -22,18 +24,25 @@ export class CheckoutPage {
 	data = {name: '', address: '', pickupTime: new Date().toISOString()}
   totalPrice = 0;
 
-  constructor(private alertCtrl:AlertController, private datePicker: DatePicker, private cartCtrl:CartProvider, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private events: Events, private alertCtrl:AlertController, private datePicker: DatePicker, private cartCtrl:CartProvider, public navCtrl: NavController, public navParams: NavParams) {
   	this.cart = this.cartCtrl.cart;
   	let aDate = new Date();
     aDate.setHours(aDate.getHours());
     this.minDateOfDatePicker = aDate.toISOString();
     this.data.pickupTime = aDate.toISOString();
+    this.setPrice();
+  }
+
+  setPrice(){
     this.totalPrice = this.cartCtrl.getTotalPrice();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CheckoutPage');
     console.log(this.checkIfCartEmpty());
+  }
+
+  ionViewDidLeave() {
   }
 
   dismiss(){
@@ -44,6 +53,8 @@ export class CheckoutPage {
   	var index = this.cart.items.indexOf(i);
    	this.cart.items.splice(index, 1); 
     this.cartCtrl.cart = this.cart;
+    this.setPrice();
+    
   }
 
   checkout(){
@@ -76,6 +87,15 @@ export class CheckoutPage {
   		return true;
   	}
   	return false;
+  }
+
+  goToShopper(){
+    this.navCtrl.push(ShopperPage);
+  }
+
+  editCartItem(item, index){
+    console.log(item);
+    this.navCtrl.push(CartItemEditPage, {item: item, index:index});
   }
 
   showDatePicker(){

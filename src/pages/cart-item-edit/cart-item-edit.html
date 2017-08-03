@@ -7,7 +7,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Shop
+      Edit item
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -20,16 +20,16 @@
 
 <ion-content padding>
 	<form (ngSubmit)="submit()" #cartItemForm="ngForm">
-		<h3 ion-text color="light" margin-bottom>{{item.itemDescription}}</h3>
-		<h3 ion-text color="light" margin-bottom>Price: Php {{item.itemPrice}}</h3>
+		<h3 ion-text color="light" margin-bottom>{{item.item.itemDescription}}</h3>
+		<h3 ion-text color="light" margin-bottom>Price: Php {{item.item.itemPrice}}</h3>
 		
 		<ion-item>
 		  <ion-label floating>Quanity</ion-label>
-		  <ion-input type="number" name="quantity" [(ngModel)]="cartItem.quantity" (input)="calculatePrice()" required min="1"></ion-input>
+		  <ion-input type="number" name="quantity" [(ngModel)]="item.quantity" (input)="calculatePrice()" required min="1"></ion-input>
 		</ion-item>
 
-		<h3 ion-text color="light" margin-top text-right>Total Price: Php {{cartItem.totalPrice}}</h3>
+		<h3 ion-text color="light" margin-top text-right>Total Price: Php {{item.totalPrice}}</h3>
 
-		<button ion-button full class="fixed-bottom-btn" margin-top type="submit" [disabled]="!cartItemForm.form.valid">Save Item</button>
+		<button ion-button full class="fixed-bottom-btn" margin-top type="submit" [disabled]="!cartItemForm.form.valid">Add to cart</button>
 	</form>
 </ion-content>

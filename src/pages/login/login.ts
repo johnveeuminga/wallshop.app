@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, Loading, AlertController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { DashboardPage } from '../dashboard/dashboard';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the LoginPage page.
@@ -16,7 +17,7 @@ import { DashboardPage } from '../dashboard/dashboard';
 })
 export class LoginPage {
 
-  constructor(private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, private auth: AuthServiceProvider) {
+  constructor( private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, private auth: AuthServiceProvider) {
   }
 
   loading: Loading;
@@ -52,6 +53,10 @@ export class LoginPage {
     });
 
     alert.present();
+  }
+
+  goToHome(){
+    this.navCtrl.push(HomePage);
   }
 
 }
