@@ -213,15 +213,15 @@ export class DatabaseProvider {
         console.log(data);
         if(data.rows.length > 0){
           for(var i =0; i<data.rows.length; i++){
-            carts.push({id:data.rows.item(i).id, name: data.rows.item(i).name, address: data.rows.item(i).address, pickupTime: data.rows.item(i).pickupTime, status:data.rows.item(i).status});
+            carts.push({id:data.rows.item(i).id, name: data.rows.item(i).name, address: data.rows.item(i).address, pickupTime: data.rows.item(i).pickupTime, status:data.rows.item(i).status, authCode:data.rows.item(i).authCode});
           }
         }
         return carts;
       })
   }
   createCart(data){
-    let postData = [data.name, data.address, data.pickupTime];
-    return this.database.executeSql("INSERT INTO carts (name, address, pickupTime, status) VALUES (?, ?, ?,  0)",postData)
+    let postData = [data.name, data.address, data.pickupTime, data.id];
+    return this.database.executeSql("INSERT INTO carts (name, address, pickupTime, status, shopperId) VALUES (?, ?, ?,  0, ?)",postData)
     .then(data => {
       return {data: data.rows, id: data.insertId};
     }).catch( err => {
@@ -252,7 +252,30 @@ export class DatabaseProvider {
     return this.database.executeSql("UPDATE carts SET status = 1 WHERE id = ?", [id]).then(res => {
       return res;
     })
-  }
+	}
+	
+	createShopper(data){
+		let postData = [data.email];
+		return this.database.executeSql("INSERT INTO shoppers (email) VALUES (?)", postData)
+			.then(res => {
+				console.log(res);
+				return res
+			})
+	}
+
+	getShopperByEmail(email){
+		return this.database.executeSql("SELECt * FROM shoppers WHERE email = (?)", [email])
+			.then(res => {
+				return res.rows
+			})
+	}
+
+	setAuthCode(data){
+		return this.database.executeSql("UPDATE carts SET authCode = (?) WHERE id = (?)",data).then( res => {
+			return res
+		})
+	}
+
   getDatabaseState(){
   	return this.databaseReady.asObservable();
   }

@@ -10,7 +10,7 @@ import { SQLitePorter } from '@ionic-native/sqlite-porter';
 import { SQLite, SQLiteDatabaseConfig , SQLiteObject } from '@ionic-native/sqlite';
 import { SQLiteMock } from '@ionic-native-mocks/sqlite';
 import { SQLitePorterMock } from '@ionic-native-mocks/sqlite-porter';
-import { DatePicker } from '@ionic-native/date-picker'
+import { DatePicker } from '@ionic-native/date-picker';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -34,10 +34,12 @@ import { DatabaseProvider } from '../providers/database/database';
 import { CheckoutPage } from '../pages/checkout/checkout';
 import { CartItemDPage } from '../pages/cart-item-d/cart-item-d';
 import { CartItemEditPage } from '../pages/cart-item-edit/cart-item-edit';
-
+import { ShopperRegistrationPage } from '../pages/shopper-registration/shopper-registration';
+import { ConfirmPage } from '../pages/confirm/confirm'
 
 import { IonicStorageModule } from '@ionic/storage';
 import { CartComponent } from '../components/cart/cart';
+import { ShopperProvider } from '../providers/shopper/shopper';
 
 class BarcodeScannerMock extends BarcodeScanner{
   scan(){
@@ -65,7 +67,9 @@ class BarcodeScannerMock extends BarcodeScanner{
     CheckoutPage,
     CartComponent,
     CartItemEditPage,
-    CartItemDPage
+    CartItemDPage,
+    ShopperRegistrationPage,
+    ConfirmPage
   ],
   imports: [
     BrowserModule,
@@ -87,7 +91,9 @@ class BarcodeScannerMock extends BarcodeScanner{
     CartItemPage,
     CheckoutPage,
     CartItemEditPage,
-    CartItemDPage
+    CartItemDPage,
+    ShopperRegistrationPage,
+    ConfirmPage
   ],
   providers: [
     StatusBar,
@@ -107,7 +113,8 @@ class BarcodeScannerMock extends BarcodeScanner{
     // { provide: SQLitePorter, useClass: SQLitePorterMock },
     SQLitePorter,
     SQLite,
-    DatePicker
+    DatePicker,
+    ShopperProvider
   ]
 })
 export class AppModule {}

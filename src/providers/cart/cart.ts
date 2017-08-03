@@ -73,4 +73,20 @@ export class CartProvider {
     return this.totalPrice;
   }
 
+  public genAuthCode(id){
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for(var i = 0; i < 7; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return text+id;
+  }
+
+  public setAuthCode(id, authCode){
+    let data = [authCode, id]
+    return this.database.setAuthCode(data).then( res => {
+      return res;
+    })
+  }
+
 }

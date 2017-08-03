@@ -11,9 +11,10 @@ INSERT INTO users(name, username, password) VALUES ('Test User', 'admin232', 'pa
 
 CREATE TABLE items (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  itemCode TEXT,
-  itemDescription TEXT UNIQUE,
-  itemPrice NUMERIC
+  itemCode TEXT UNIQUE,
+  itemDescription TEXT,
+  itemPrice NUMERIC,
+	photoPath TEXT
 );
 
 INSERT INTO items(itemCode, itemDescription, itemPrice) VALUES ('001', 'Coffee', 50.0);
@@ -23,7 +24,9 @@ CREATE TABLE carts (
 	name TEXT,
 	address TEXT,
 	pickupTime DATE,
-	status INTEGER
+	status INTEGER,
+	shopperId INTEGER,
+	authCode TEXT
 );
 
 CREATE TABLE cartItems (
@@ -33,3 +36,10 @@ CREATE TABLE cartItems (
 	quantity NUMERIC,
 	totalPrice NUMERIC
 );
+
+CREATE TABLE shoppers (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	email TEXT UNIQUE
+);
+
+INSERT INTO shoppers (email) VALUES ('sample@example.com');

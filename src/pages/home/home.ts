@@ -3,6 +3,10 @@ import { NavController } from 'ionic-angular';
 
 import { LoginPage } from '../login/login';
 import { ShopperPage } from '../shopper/shopper';
+import { ShopperRegistrationPage } from '../shopper-registration/shopper-registration';
+
+import { IonicStorageModule, Storage } from  '@ionic/storage';
+
 
 @Component({
   selector: 'page-home',
@@ -10,7 +14,7 @@ import { ShopperPage } from '../shopper/shopper';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(private storage: Storage, public navCtrl: NavController) {
 
   }
 
@@ -19,7 +23,14 @@ export class HomePage {
   }
 
   public goToShopper(){
-  	this.navCtrl.push(ShopperPage);
+    this.storage.get("shopperEmail")
+      .then(res => {
+        if(res){
+          this.navCtrl.push(ShopperPage);
+        }else{
+          this.navCtrl.push(ShopperRegistrationPage);
+        }
+      })
   }
 
 }

@@ -24,7 +24,7 @@ export class ShopperPage {
   cart = [];
 
   constructor(private cartCtrl: CartProvider, private events: Events, public modalCtrl: ModalController, public alertCtrl: AlertController, public itemCtrl: ItemProvider, private qrScanner: QRScanner, private barcodeScanner: BarcodeScanner, public navCtrl: NavController, public navParams: NavParams) {
-
+    
   }
 
   tapped = 0;
@@ -33,6 +33,10 @@ export class ShopperPage {
     console.log('ionViewDidLoad ShopperPage');
   }
 
+  ionViewWillEnter(){
+    this.scanBarcode();
+  }
+  
   scanBarcode(){
   	this.barcodeScanner.scan().then((barcodeData) => {
       if(!barcodeData.cancelled){

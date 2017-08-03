@@ -4,6 +4,8 @@ import { CartProvider } from '../../providers/cart/cart';
 import { ShopperPage } from '../shopper/shopper';
 import { DatePicker } from '@ionic-native/date-picker';
 import { CartItemEditPage } from '../cart-item-edit/cart-item-edit'
+import { ShopperProvider } from '../../providers/shopper/shopper'
+import { ConfirmPage }from '../confirm/confirm'
 
 
 /**
@@ -21,12 +23,13 @@ export class CheckoutPage {
 
 	cart:any;
   private minDateOfDatePicker
-	data = {name: '', address: '', pickupTime: new Date().toISOString()}
+	data = {name: '', address: '', pickupTime: new Date().toISOString(), id:null}
   totalPrice = 0;
 
-  constructor(private events: Events, private alertCtrl:AlertController, private datePicker: DatePicker, private cartCtrl:CartProvider, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private shopper: ShopperProvider, private alertCtrl:AlertController, private datePicker: DatePicker, private cartCtrl:CartProvider, public navCtrl: NavController, public navParams: NavParams) {
   	this.cart = this.cartCtrl.cart;
-  	let aDate = new Date();
+    let aDate = new Date();
+    this.data.id = this.shopper.shopper.id;
     aDate.setHours(aDate.getHours());
     this.minDateOfDatePicker = aDate.toISOString();
     this.data.pickupTime = aDate.toISOString();
@@ -60,14 +63,18 @@ export class CheckoutPage {
   checkout(){
    this.cartCtrl.create(this.data, this.cart.items)
     .then( res => {
-      this.showAlertUndismissable("", "Cart successfully added", [{
-        text: "Okay",
-        handler: () =>{
-          this.cartCtrl.cart.items = [];
-          this.cart.items = [];
-          this.navCtrl.push(ShopperPage);
-        }
-      }])
+      let code = (this.cartCtrl.genAuthCode(res.id));
+      this.cartCtrl.setAuthCode(res.id, code).then(res => {
+        this.navCtrl.push(ConfirmPage, {code: code});
+      })
+      // this.showAlertUndismissable("", "Cart successfully added", [{
+      //   text: "Okay",
+      //   handler: () =>{
+      //     this.cartCtrl.cart.items = [];
+      //     this.cart.items = [];
+      //     this.navCtrl.push(ShopperPage);
+      //   }
+      // }])
     })
   }
 
