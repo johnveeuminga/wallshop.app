@@ -37,9 +37,15 @@ Prerequisites:
     
 1. Navigate to the wallshop.app folder on git bash.
 2. Run ionic cordova run android
+```bash
+ionic cordova run android
+```
 
 ## Retreiving the APK
 1. On bash, navigate to the wallshop.app folder.
 2. Run ionic cordova build android
-3. Open and file explorer and go to C:\Users\{your-current-user}\wallshop.app\platforms\android\build\outputs\apk\
+```bash
+ionic cordova build android
+```
+3. Open and file explorer and go to C:\Users\\{your-current-user}\wallshop.app\platforms\android\build\outputs\apk\
 4. A file named android-debug.apk should be seen.
