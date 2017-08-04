@@ -25,9 +25,9 @@ cd wallshop.app
 ```bash
 npm install
 ```
-5.Run ionic state restore on bash
+5.Run ionic cordova prepare on bash
 ```bash
-ionic state restore
+ionic cordova prepare
 ```
 
 ## Testing
