@@ -1,6 +1,16 @@
 <!-- Generated template for the ItemComponent component -->
-<ion-card *ngFor="let item of items" (press)="showOptions(item.id)">
+ <ion-card *ngFor="let item of items" (press)="showOptions(item.id)">
   <ion-card-content>
-    {{item.itemDescription}}
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <img src="{{item.photoPath}}" height=100 width=100%>
+        </ion-col>
+        <ion-col align-self-center>
+          <h4 ion-text color="primary" class="font-weight-bold">{{item.itemDescription}}</h4>
+          <p><span ion-text color="primary">Price:</span> {{item.itemPrice}}</p> 
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-card-content>
-</ion-card>
+</ion-card> 

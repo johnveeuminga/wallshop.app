@@ -123,24 +123,31 @@ export class DatabaseProvider {
   checkIfBarcodeExists(code){
   	return this.database.executeSql("SELECT * FROM items WHERE itemCode = (?)", [code])
   		.then( res => {
-  			return res.rows;
+  			if(res.rows.length > 0){
+					return true
+				}else{
+					return false;
+				}
   		})
   }
 
   addItem(itemCode, itemDescription, itemPrice){
-  	let data  = [itemCode, itemDescription, itemPrice];
-  	return this.checkIfBarcodeExists(itemCode).then( res => {
-  		return new Promise((resolve, reject)  => {
-  		if(res.length > 0){
-  			return reject("Code already taken");
-	  	}else{
-		  	resolve(this.database.executeSql("INSERT INTO items (itemCode, itemDescription, itemPrice) values (?, ?, ?)", data)
-		  		.then( res => {
-		  			return res;
-		  		}));
-	  	}
-	  });
-  	})
+		let data  = [itemCode, itemDescription, itemPrice];
+		var ret;
+  	return new Promise((resolve, reject)  => {
+			this.checkIfBarcodeExists(itemCode).then( res => {
+				console.log(res);
+				if(res){
+					 return  reject("Code already taken");
+				}else{
+					 return  resolve(this.database.executeSql("INSERT INTO items (itemCode, itemDescription, itemPrice) values (?, ?, ?)", data)
+						.then( res => {
+							console.log(res);
+							return res;
+						}));
+				}
+			});
+		})
   }
 
   editItem(itemCode, itemDescription, itemPrice, id){
@@ -192,7 +199,7 @@ export class DatabaseProvider {
   		let items = [];
   		if(data.rows.length > 0){
   			for(var i =0; i<data.rows.length; i++){
-  				items.push({itemCode: data.rows.item(i).itemCode, itemDescription: data.rows.item(i).itemDescription, itemPrice: data.rows.item(i).itemPrice, id: data.rows.item(i).id});
+  				items.push({itemCode: data.rows.item(i).itemCode, itemDescription: data.rows.item(i).itemDescription, itemPrice: data.rows.item(i).itemPrice, id: data.rows.item(i).id, photoPath: data.rows.item(i).photoPath});
   			}
   		}
   		return items;
@@ -278,6 +285,14 @@ export class DatabaseProvider {
 
   getDatabaseState(){
   	return this.databaseReady.asObservable();
-  }
+	}
+	
+	setItemPhoto(id, photoPath){
+		let data = [photoPath, id];
+		return this.database.executeSql("UPDATE items SET photoPath = (?) where id = (?)", data).then( res => {
+			return res;
+		});
+	}
+
 
 }

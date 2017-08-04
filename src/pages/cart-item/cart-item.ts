@@ -16,7 +16,7 @@ import { CheckoutPage } from '../checkout/checkout';
 })
 export class CartItemPage {
 
-  item = {id: 1, itemDescription: 1, itemPrice: 1.00};
+  item = {id: 1, itemDescription: 1, itemPrice: 1.00, photoPath:""};
 	cartItem = {quantity:1, totalPrice: 1.00};
 
   constructor(private events:Events, private alertCtrl: AlertController, private cartItemProv: CartItemProvider, private cart: CartProvider, public viewCtrl: ViewController, public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
@@ -24,6 +24,7 @@ export class CartItemPage {
     this.item.id = scannedItem.id;
     this.item.itemDescription= scannedItem.itemDescription
     this.item.itemPrice = scannedItem.itemPrice 
+    this.item.photoPath = scannedItem.photoPath
     this.calculatePrice();
     console.log(this.item);
   }

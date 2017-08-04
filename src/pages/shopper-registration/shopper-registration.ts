@@ -37,6 +37,8 @@ export class ShopperRegistrationPage {
         if(res.length > 0){
           this.shopperCtrl.shopper = res.item(0);
 
+          this.storage.set("shopper", this.shopperCtrl.shopper);
+          
           this.navCtrl.push(ShopperPage);
         }else{
           this.shopperCtrl.createShopper(this.data).then( res => {
@@ -44,7 +46,7 @@ export class ShopperRegistrationPage {
               id: res.insertId,
               email: this.data.email
             };
-
+            this.storage.set("shopper", this.shopperCtrl.shopper);
             console.log(this.shopperCtrl.shopper);
             this.navCtrl.push(ShopperPage);
           })

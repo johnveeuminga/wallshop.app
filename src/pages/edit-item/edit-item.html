@@ -7,7 +7,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Add Item
+      Edit Item
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -35,7 +35,15 @@
 	  <ion-item>
 	    <ion-label floating>Item Price</ion-label>
 	    <ion-input type="number" name="itemPrice" [(ngModel)]="data.itemPrice" required></ion-input>
-	  </ion-item>
+		</ion-item>
+			
+		<button ion-button block margin-top (click)="chooseFile()" type="button">EDIT PHOTO</button>
+
+		<div class="img-container mt-2">
+			<img src="{{data.photoPath}}" *ngIf="data.photoPath && !imgPath" class="blbla"/>
+			<img src="{{imgPath}}" *ngIf="imgPath"/>
+			<p class="text-center w-100" *ngIf="!data.photoPath" color="light">No image selected yet. Please select an image by pressing the button above.</p>
+		</div>
 
 	  <button ion-button full class="fixed-bottom-btn" margin-top type="submit" [disabled]="!itemForm.form.valid">Save Item</button>
 	</form>

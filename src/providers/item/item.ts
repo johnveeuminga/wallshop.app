@@ -23,12 +23,14 @@ export class ItemProvider {
   public index(){
     return this.database.getAllItems()
     .then(data => {
+      console.log(data);
       return data;
     })
   }
 
   public store(data){
   	  return this.database.addItem(data.itemCode, data.itemDescription, data.itemPrice).then( data => {
+        console.log(data);
         return data
       }).catch( error => {
         return Promise.reject(error);
@@ -65,6 +67,13 @@ export class ItemProvider {
     .then(data => {
       return data;
     })
+  }
+
+  public setPhoto(id, path){
+    return this.database.setItemPhoto(id, path)
+      .then(data => {
+        return data;
+      })
   }
 
 }

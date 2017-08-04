@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController, AlertController} from 'ionic-angular';
 import { ItemProvider } from '../../providers/item/item';
 import { DashboardPage } from '../dashboard/dashboard';
+import { FileChooser } from '@ionic-native/file-chooser';
+import { FilePath } from '@ionic-native/file-path';
+import { File } from '@ionic-native/file';
 
 /**
  * Generated class for the EditUserPage page.
@@ -17,18 +20,17 @@ import { DashboardPage } from '../dashboard/dashboard';
 export class EditItemPage {
 
 	id: number;
-    data = {item_id:0, itemCode: '', itemDescription: '', itemPrice: ''};
+  data:any = {};
+  imgPath = "";
 
-  constructor(public alertCtrl: AlertController, public itemCtrl: ItemProvider, public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private file: File, private filePath: FilePath, private fileChooser: FileChooser, public alertCtrl: AlertController, public itemCtrl: ItemProvider, public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams) {
   	this.id = navParams.get('id');
 
   	this.itemCtrl.show(this.id).then(data => {
-  	  let res = data.data;
-  	  this.data.item_id = this.id;
-  	  this.data.itemCode = res.itemCode;
-  	  this.data.itemDescription = res.itemDescription;
-  	  this.data.itemPrice = res.itemPrice;
-  	});
+      this.data = data.data;
+      
+    });
+    console.log(this.imgPath);
   }
 
   ionViewDidLoad() {
@@ -41,6 +43,26 @@ export class EditItemPage {
 
   submit(){
   	this.itemCtrl.update(this.id, this.data).then(data => {
+      let fileName = this.data.photoPath.substr(this.data.photoPath.lastIndexOf('/')+1, this.data.photoPath.length);
+      console.log(fileName);
+      this.file.removeFile(this.file.dataDirectory, fileName).then( res =>{
+        let path = this.imgPath.substr(0, this.imgPath.lastIndexOf('/')+1);
+        let newFileName = this.imgPath.substr(this.imgPath.lastIndexOf('/')+1 , this.imgPath.length);
+        let ext = newFileName.substr(newFileName.lastIndexOf('.')+1, newFileName.length);
+        let editFileName = this.id + '.' + ext;
+        console.log(path);
+        console.log(newFileName);
+        console.log(ext);
+        console.log(editFileName);
+        this.file.copyFile(path, newFileName, this.file.dataDirectory, editFileName).then( res => {
+          console.log(res);
+          return res;
+        }).catch( e => {
+          console.log(e);
+        });
+      }).catch( e => {
+        console.log(e + "deletion");
+      })
   		this.showAlertUndismissable("Successfully updated item.", data.message, [{
   		  text: 'Close',
   		  handler: () => {
@@ -78,6 +100,18 @@ export class EditItemPage {
     });
 
     alert.present();
+  }
+
+  chooseFile(){
+    this.fileChooser.open()
+      .then(uri => {
+        this.filePath.resolveNativePath(uri)
+          .then( res => {
+            console.log(uri);
+            this.imgPath = res;
+          })
+      })
+      .catch(e => console.log(e))
   }
 
 }

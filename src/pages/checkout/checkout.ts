@@ -7,6 +7,9 @@ import { CartItemEditPage } from '../cart-item-edit/cart-item-edit'
 import { ShopperProvider } from '../../providers/shopper/shopper'
 import { ConfirmPage }from '../confirm/confirm'
 
+import { IonicStorageModule, Storage } from  '@ionic/storage';
+
+
 
 /**
  * Generated class for the CheckoutPage page.
@@ -25,15 +28,17 @@ export class CheckoutPage {
   private minDateOfDatePicker
 	data = {name: '', address: '', pickupTime: new Date().toISOString(), id:null}
   totalPrice = 0;
-
-  constructor(private shopper: ShopperProvider, private alertCtrl:AlertController, private datePicker: DatePicker, private cartCtrl:CartProvider, public navCtrl: NavController, public navParams: NavParams) {
-  	this.cart = this.cartCtrl.cart;
+  shpr:any = null;
+  constructor(private storage: Storage, private shopper: ShopperProvider, private alertCtrl:AlertController, private datePicker: DatePicker, private cartCtrl:CartProvider, public navCtrl: NavController, public navParams: NavParams) {
+    this.cart = this.cartCtrl.cart;
     let aDate = new Date();
-    this.data.id = this.shopper.shopper.id;
-    aDate.setHours(aDate.getHours());
-    this.minDateOfDatePicker = aDate.toISOString();
-    this.data.pickupTime = aDate.toISOString();
-    this.setPrice();
+    this.storage.get("shopper").then(res => {
+      this.data.id = res.id;
+      aDate.setHours(aDate.getHours());
+      this.minDateOfDatePicker = aDate.toISOString();
+      this.data.pickupTime = aDate.toISOString();
+      this.setPrice();
+    })
   }
 
   setPrice(){

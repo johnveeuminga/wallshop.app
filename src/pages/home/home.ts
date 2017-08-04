@@ -23,7 +23,7 @@ export class HomePage {
   }
 
   public goToShopper(){
-    this.storage.get("shopperEmail")
+    this.storage.get("shopper")
       .then(res => {
         if(res){
           this.navCtrl.push(ShopperPage);

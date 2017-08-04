@@ -14,7 +14,7 @@ CREATE TABLE items (
   itemCode TEXT UNIQUE,
   itemDescription TEXT,
   itemPrice NUMERIC,
-	photoPath TEXT
+  photoPath TEXT
 );
 
 INSERT INTO items(itemCode, itemDescription, itemPrice) VALUES ('001', 'Coffee', 50.0);

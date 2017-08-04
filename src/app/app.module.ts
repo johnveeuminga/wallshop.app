@@ -11,6 +11,9 @@ import { SQLite, SQLiteDatabaseConfig , SQLiteObject } from '@ionic-native/sqlit
 import { SQLiteMock } from '@ionic-native-mocks/sqlite';
 import { SQLitePorterMock } from '@ionic-native-mocks/sqlite-porter';
 import { DatePicker } from '@ionic-native/date-picker';
+import { FileChooser } from '@ionic-native/file-chooser';
+import { FilePath } from '@ionic-native/file-path';
+import { File } from '@ionic-native/file';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -40,6 +43,7 @@ import { ConfirmPage } from '../pages/confirm/confirm'
 import { IonicStorageModule } from '@ionic/storage';
 import { CartComponent } from '../components/cart/cart';
 import { ShopperProvider } from '../providers/shopper/shopper';
+import { SearchPipe } from '../pipes/search/search';
 
 class BarcodeScannerMock extends BarcodeScanner{
   scan(){
@@ -69,7 +73,8 @@ class BarcodeScannerMock extends BarcodeScanner{
     CartItemEditPage,
     CartItemDPage,
     ShopperRegistrationPage,
-    ConfirmPage
+    ConfirmPage,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
@@ -104,8 +109,8 @@ class BarcodeScannerMock extends BarcodeScanner{
     QRScanner,
     UserProvider,
     ItemProvider,
-    { provide: BarcodeScanner, useClass: BarcodeScannerMock },
-    // BarcodeScanner,
+    // { provide: BarcodeScanner, useClass: BarcodeScannerMock },
+    BarcodeScanner,
     CartItemProvider,
     CartProvider,
     DatabaseProvider,
@@ -114,7 +119,10 @@ class BarcodeScannerMock extends BarcodeScanner{
     SQLitePorter,
     SQLite,
     DatePicker,
-    ShopperProvider
+    ShopperProvider,
+    FileChooser,
+    FilePath,
+    File
   ]
 })
 export class AppModule {}

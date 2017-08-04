@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController, ModalController, Events } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ModalController, Events, Platform } from 'ionic-angular';
 import { QRScanner, QRScannerStatus} from '@ionic-native/qr-scanner';
 import { BarcodeScanner} from '@ionic-native/barcode-scanner';
 import { ItemProvider } from '../../providers/item/item';
@@ -23,8 +23,10 @@ export class ShopperPage {
 
   cart = [];
 
-  constructor(private cartCtrl: CartProvider, private events: Events, public modalCtrl: ModalController, public alertCtrl: AlertController, public itemCtrl: ItemProvider, private qrScanner: QRScanner, private barcodeScanner: BarcodeScanner, public navCtrl: NavController, public navParams: NavParams) {
-    
+  constructor(private platform: Platform, private cartCtrl: CartProvider, private events: Events, public modalCtrl: ModalController, public alertCtrl: AlertController, public itemCtrl: ItemProvider, private qrScanner: QRScanner, private barcodeScanner: BarcodeScanner, public navCtrl: NavController, public navParams: NavParams) {
+    this.platform.ready().then( () => {
+      this.scanBarcode();
+    })
   }
 
   tapped = 0;
@@ -34,7 +36,6 @@ export class ShopperPage {
   }
 
   ionViewWillEnter(){
-    this.scanBarcode();
   }
   
   scanBarcode(){

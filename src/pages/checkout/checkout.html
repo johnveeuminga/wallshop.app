@@ -44,16 +44,21 @@
 
 
 	<ion-card *ngFor = "let item of cart.items;let i=index" (tap)="editCartItem(item,i)">
-	
-	  <ion-card-header >
-	  		{{item.item.itemDescription}}
-	  		<ion-icon name="close" (click)="remove(i)" float-right *ngIf="!checkIfCartEmpty()"></ion-icon>
-	  </ion-card-header>
-	  <ion-card-content>
-	    	<p>Quantity: {{item.quantity}}</p>
-			<p>Total Price: {{item.totalPrice}}</p>
-	  </ion-card-content>
-	</ion-card>
+  <ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <img src="{{item.item.photoPath}}" height=100 width=100%>
+        </ion-col>
+        <ion-col align-self-center>
+          <h4 ion-text color="primary" class="font-weight-bold">{{item.item.itemDescription}}</h4>
+          <p><span ion-text color="primary">Quantity:</span> {{item.quantity}}</p> 
+          <p><span ion-text color="primary">Total Price:</span> {{item.totalPrice}}</p> 
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card> 
 
 	<button ion-button block color="primary" class="fixed-bottom" [disabled] = "checkIfCartEmpty() || !checkOutForm.form.valid">Checkout</button>
 </form>

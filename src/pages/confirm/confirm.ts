@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { ShopperPage } from '../shopper/shopper';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the ConfirmPage page.
@@ -26,7 +27,7 @@ export class ConfirmPage {
   }
 
   goToShopper(){
-    this.navCtrl.push(ShopperPage);
+    this.navCtrl.push(HomePage);
   }
 
 }

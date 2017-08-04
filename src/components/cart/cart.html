@@ -1,6 +1,14 @@
 <!-- Generated template for the ItemComponent component -->
-<ion-card *ngFor="let cart of carts" (tap)="showCartItems(cart.id, cart)">
+<ion-searchbar
+  [(ngModel)]="searchKey"
+  [showCancelButton]="shouldShowCancel"
+  (ionInput) = "search($event)"
+  (ionCancel) = "cancelSearch()"
+  placeholder = "Search for code.">
+</ion-searchbar>
+<ion-card *ngFor="let cart of carts | search:searchKey " (tap)="showCartItems(cart.id, cart)">
   <ion-card-content>
-    Order # {{cart.id}} <div float-right *ngIf="cart.status" color="primary">Processed</div>
+    Order # {{cart.id}}<div float-right *ngIf="cart.status" color="primary">Processed</div>
+    <p> <span class="text-uppercase">{{cart.authCode}}</span> </p>
   </ion-card-content>
 </ion-card>
