@@ -1,26 +1,45 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+## How to pull this code
 
-## How to use this template
+In order to pull this repository to another system follow the steps below:
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+### Prerequisites
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
+1. Make sure you have Node.js(version 6 or higher) and git Bash installed.
+2. Android SDK installed (API 19 or higher) (optional).
+3. An emulator(preferrably Android version 4.4.4) or device to run the app.
 
-### With the Ionic CLI:
-
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
-
+## Installation
+1. Open Git Bash and enter the following command
 ```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myBlank blank
+sudo npm install -g ionic cordova
+```
+2. Run the following command on Git Bash
+```bash
+git clone https://github.com/johnveeuminga/wallshop.app.git
+```
+3. Navigate to the wallshop folder on bash using the code below
+```bash
+cd wallshop.app
+```
+4. Run npm install on bash
+```bash
+npm install
+```
+5.Run ionic state restore on bash
+```bash
+ionic state restore
 ```
 
-Then, to run it, cd into `myBlank` and run:
+## Testing
+To be able to test this application in a device:
+Prerequisites:
+	Before running the app, please make sure that an emulator or an android device is running locally. To be able to run the app on a device, connect the device on the computer and enable USB Debugging. After that, follow the commands below.
+    
+1. Navigate to the wallshop.app folder on git bash.
+2. Run ionic cordova run android
 
-```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
-```
-
-Substitute ios for android if not on a Mac.
-
+## Retreiving the APK
+1. On bash, navigate to the wallshop.app folder.
+2. Run ionic cordova build android
+3. Open and file explorer and go to C:\Users\{your-current-user}\wallshop.app\platforms\android\build\outputs\apk\
+4. A file named android-debug.apk should be seen.
